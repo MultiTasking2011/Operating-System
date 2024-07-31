@@ -1,0 +1,13 @@
+bring all from quiver
+
+
+
+function:hi:*var1, var2* ~>
+-> display .hi.
+-> var:test: = str:hello:
+-> display |test|
+:break:
+
+run:hi:*lol, meow*
+
+
