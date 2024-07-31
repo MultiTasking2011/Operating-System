@@ -121,7 +121,7 @@ class fullcode:
                         varstore[variable.group(1)] = float(variable.group(3))
                     if variable.group(2) == "int":
                         varstore[variable.group(1)] = int(variable.group(3))
-
+ 
                 # display variable
                 display_variable = re.search(self.display_var_pattern, i)
                 if display_variable:
