@@ -1,0 +1,21 @@
+import pygame as p
+p.init()
+
+scr_w = 640
+scr_h = 640
+clock = p.time.Clock()
+
+p.display.set_caption("2 Player Chess")
+screen = p.display.set_mode((scr_w,scr_h))
+run=True
+
+while run:
+    screen.fill((0,0,0))
+    for event in p.event.get():
+        if event.type == p.quit():
+            run=False
+            break
+    p.display.update()
+    clock.tick(60)
+
+p.quit()
