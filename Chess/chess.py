@@ -16,8 +16,8 @@ def game():
         for event in p.event.get():
             if event.type == p.quit():
                 run=False
-                # sys.exit()
-        # clock.tick(60)
+                sys.exit()
+        clock.tick(60)
         p.display.flip()
 
     p.quit()
