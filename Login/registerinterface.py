@@ -11,16 +11,12 @@ class register():
 
     def gui(self):
         self.acct_cr = tk.Button(self.root, text="Create Account")
-        self.user = tk.Entry.get(self.root)
-        self.pwd = tk.Entry.get(self.root)
+        self.user = tk.Entry(self.root)
+        self.pwd = tk.Entry(self.root)
 
         self.user.pack(pady=5, padx=5)
         self.pwd.pack(pady=5, padx=5)
         self.acct_cr.pack(pady=2, padx=2)
-
-
-
-
 
 if __name__ == '__main__':
     root=tk.Tk()
