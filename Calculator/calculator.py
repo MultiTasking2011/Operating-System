@@ -34,7 +34,9 @@ class calculator():
         self.approx = tk.Button(self.root, text="approx.", font="inconsolata")
         self.equals = tk.Button(self.root, text="=", font="inconsolata")
 
-        self.one.place(relx = 2, rely= 2, anchor="center")
+        self.one.place(relx = 0.1, rely= 0.75, anchor="center")
+        self.zero.place(relx = 0.1, rely= 0.9, anchor="center")
+
 
 
 
