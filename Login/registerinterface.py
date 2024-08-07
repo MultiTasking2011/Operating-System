@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import os
 
 class Register:
     def __init__(self, root) -> None:
@@ -19,9 +20,14 @@ class Register:
     def append_to_file(self):
         usr = self.user.get()
         pwd = self.pwd.get()
+        filename = "Login/login/login.txt"
+        
         # Ensure the directory exists
-        with open("Login/login/login.txt", "a") as file:
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        
+        with open(filename, "a") as file:
             file.write(f"{usr},{pwd}\n")
+        messagebox.showinfo("Success", "Account created successfully.")
 
 if __name__ == '__main__':
     root = tk.Tk()

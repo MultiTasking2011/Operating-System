@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+import os
 
 class LoginChecker:
     def __init__(self, user, pwd):
@@ -7,16 +8,15 @@ class LoginChecker:
         self.pwd = pwd
 
     def check_login(self, filename='login.txt'):
-        with open("Login/login/login.txt", 'r') as file:
+        with open(filename, 'r') as file:
             for line in file:
                 if self.user in line and self.pwd in line:
                     user_index = line.find(self.user)
                     pwd_index = line.find(self.pwd)
                     if user_index < pwd_index:
                         return True
-        return False
 
-class login():
+class Login:
     def __init__(self, root) -> None:
         self.root = root
         self.root.title("Login")
@@ -34,6 +34,10 @@ class login():
         self.register.pack(pady=2, padx=2)
 
     def subprocessfunc(self):
+        current_dir = os.getcwd()
+        target_dir = '/Applications/Documents/Suraj/Coding Folder/My Projects/Operating System/Login'
+        if current_dir != target_dir:
+            os.chdir(target_dir)
         with open("registerinterface.py") as file:
             exec(file.read())
 
@@ -41,12 +45,12 @@ class login():
         user = self.user.get()
         pwd = self.pwd.get()
         checker = LoginChecker(user, pwd)
-        if checker.check_login():
+        if checker.check_login("Login/login/login.txt"):
             messagebox.showinfo("Login Success", "Credentials found in the correct order.")
         else:
             messagebox.showerror("Login Failed", "Credentials not found or not in the correct order.")
 
 if __name__ == '__main__':
     root = tk.Tk()
-    app = login(root)
+    app = Login(root)
     root.mainloop()
