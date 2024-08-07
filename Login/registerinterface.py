@@ -8,7 +8,7 @@ class register():
         self.root.title("Register")
         self.gui()
 
-    def reggui(self):
+    def gui(self):
         self.acct_cr = tk.Button(self.root, text="Create Account")
         self.user = tk.Entry(self.root)
         self.pwd = tk.Entry(self.root)

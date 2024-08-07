@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
+import os
+os.chdir('/Applications/Documents/Suraj/Coding Folder/My Projects/Operating System/Login')
+
 
 class login():
     def __init__(self, root) -> None:
