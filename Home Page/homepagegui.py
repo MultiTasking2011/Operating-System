@@ -1,15 +1,23 @@
 import tkinter as tk
+from PIL import Image, ImageTk
 
 class BasicWindow:
     def __init__(self, root):
         self.root = root
-        self.root.title("code")
+        self.root.title("Home")
         self.homepage()
     
     def homepage(self):
-        self.calcimage = "download.png"
-        self.calculator = tk.Button(width = 1, height = 1, image="download.png")
-        self.calculator.pack(self.root)
+        # Open and resize the image
+        image = Image.open("Home Page/download.png")
+        resized_image = image.resize((40, 40), Image.ANTIALIAS)
+        
+        # Convert the image to PhotoImage
+        self.calcimage = ImageTk.PhotoImage(resized_image)
+        
+        # Create a button with the resized image
+        self.calculator = tk.Button(self.root, image=self.calcimage)
+        self.calculator.pack()
 
 if __name__ == "__main__":
     root = tk.Tk()
