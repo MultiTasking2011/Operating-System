@@ -1,6 +1,5 @@
 import tkinter as tk
 from tkinter import messagebox
-import registerinterface
 
 class login():
     def __init__(self, root) -> None:
@@ -11,7 +10,7 @@ class login():
 
     def gui(self):
         self.signin = tk.Button(self.root, text="Sign In")
-        self.register = tk.Button(self.root, text="Register", command="")
+        self.register = tk.Button(self.root, text="Register", command=self.subprocessfunc)
         self.user = tk.Entry(self.root)
         self.pwd = tk.Entry(self.root, show="*")
 
@@ -20,6 +19,9 @@ class login():
         self.signin.pack(pady=2, padx=2)
         self.register.pack(pady=2, padx=2)
 
+    def subprocessfunc(self):
+        with open("registerinterface.py") as file:
+            exec(file.read())
 
 
 
