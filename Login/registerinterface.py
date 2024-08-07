@@ -19,12 +19,11 @@ class Register:
     def append_to_file(self):
         usr = self.user.get()
         pwd = self.pwd.get()
-        with open("login.txt", "a") as file:
-            file.write(f"Username: {usr}, Password: {pwd}\n")
+        # Ensure the directory exists
+        with open("Login/login/login.txt", "a") as file:
+            file.write(f"{usr},{pwd}\n")
 
 if __name__ == '__main__':
     root = tk.Tk()
     app = Register(root)
     root.mainloop()
-
-
