@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
+from PIL import Image, ImageTk, Image
 import os
 
 class LoginChecker:
@@ -45,8 +46,10 @@ class Login:
         user = self.user.get()
         pwd = self.pwd.get()
         checker = LoginChecker(user, pwd)
-        if checker.check_login("Login/login/login.txt"):
+        if checker.check_login("Login/login/login/login.txt"):
             messagebox.showinfo("Login Success", "Credentials found in the correct order.")
+            with open("Home Page/homepagegui.py") as file:
+                exec(file.read())
         else:
             messagebox.showerror("Login Failed", "Credentials not found or not in the correct order.")
 
