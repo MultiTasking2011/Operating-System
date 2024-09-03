@@ -2,22 +2,31 @@ import re
 
 def read_file(filename):
     try:
+        # Open the file and read its content
         with open(filename, "r") as f:
             x = f.read()
 
+        # Split the content into lines and filter out empty lines
         req_list = x.split("\n")
         req_list = [i for i in req_list if i != ""]
+
         return req_list
+
     except FileNotFoundError:
+        # Handle file not found error
         print(f"File {filename} not found.")
         return []
+
     except IOError:
+        # Handle other I/O errors
         print(f"Error reading file {filename}.")
         return []
 
 class fullcode:
     def __init__(self, code):
         self.code = code
+        
+        # Boolean flags for importing various modules
         self.a = False
         self.b = False
         self.c = False
@@ -25,6 +34,8 @@ class fullcode:
         self.e = False
         self.f = False
         self.g = False  # Added to match `importing` method
+
+        # Regular expressions for pattern matching
         self.display_pattern = r'^display \.(.*?)\.'
         self.display_var_pattern = r'^display \|([^|]*)\|'
         self.display_list_pattern = r'^display \*([^|]*)\*'
@@ -41,23 +52,33 @@ class fullcode:
         return "err"
 
     def importing(self):
+        # Check for various import statements in the code
         if "bring all from draw" in self.code:
             self.a = True
+
         if "bring all from quiver" in self.code:
             self.b = True
+
         if "bring all from rand" in self.code:
             self.c = True
+
         if "bring all from output" in self.code:
             self.d = True
+
         if "bring all from threedimensions" in self.code:
             self.e = True
+
         if "bring all from clock" in self.code:
             self.f = True
+
         if "bring all from math" in self.code:
             self.g = True
 
     def quiver(self):
+        # Call the importing method
         self.importing()
+
+        # Initialize storage containers
         funcdisplaystore = list()
         store = list()
         varstore = dict() 
@@ -69,6 +90,7 @@ class fullcode:
         parameterstore = dict()
         funccodestore = dict()
 
+        # Process the code if 'quiver' module is imported
         if self.b:
             for i in self.code:
                 # Display Pattern
