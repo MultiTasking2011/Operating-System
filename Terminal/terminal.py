@@ -13,7 +13,7 @@ active = False
   
 while True: 
     starting_rect = pygame.Rect(0, 0, 600, 10)
-    input_rect = (pygame.Rect(0,15,600,600))
+    input_rect = (pygame.Rect(0,15,600,20))
     screen.fill((0, 0, 0)) 
     pygame.draw.rect(screen, color, starting_rect) 
     text_surface = base_font.render("New OS terminal session", True, (255, 255, 255)) 
@@ -28,15 +28,16 @@ while True:
                 user_text = user_text[:-1] 
             else: 
                 user_text += event.unicode
-            if event.key == pygame.K_ENTER:
-                print("wtf")
-                pygame.draw.rect(screen, color, pygame.Rect(0,30,600,600)) 
-                text_surface = base_font.render("Incorrect command", True, (255, 255, 255)) 
-                screen.blit(text_surface, (input_rect.x+5, input_rect.y+5)) 
+            if event.key == pygame.K_RETURN:
+                pygame.draw.rect(screen, color, pygame.Rect(0,30,600,10)) 
+                textalso = base_font.render("Incorrect command", True, (255, 255, 255)) 
+                screen.blit(textalso, (pygame.Rect(0,30,600,10).x+5, pygame.Rect(0,30,600,10).y+5)) 
 
     pygame.draw.rect(screen, color, input_rect) 
     textinput = base_font.render(user_text, True, (255, 255, 255)) 
     screen.blit(textinput, (input_rect.x+5, input_rect.y+5)) 
-    input_rect.w = max(100, text_surface.get_width()+10) 
+    # input_rect.w = max(100, textalso.get_width()+10) 
+    # screen.blit(textalso, (pygame.Rect(0,30,600,10).x+5, pygame.Rect(0,30,600,10).y+5)) 
+
     pygame.display.flip() 
     clock.tick(60) 
