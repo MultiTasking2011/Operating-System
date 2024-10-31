@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog
+from main import fullcode as code
 
 class TextSaverApp:
     def __init__(self, root):

@@ -36,7 +36,7 @@ class Login:
 
     def subprocessfunc(self):
         current_dir = os.getcwd()
-        target_dir = '/Applications/Documents/Suraj/Coding Folder/My Projects/Operating System/Login'
+        target_dir = 'Login'
         if current_dir != target_dir:
             os.chdir(target_dir)
         with open("registerinterface.py") as file:

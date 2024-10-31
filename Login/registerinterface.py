@@ -27,7 +27,7 @@ class Register:
         
         with open(filename, "a") as file:
             file.write(f"{usr},{pwd}\n")
-        messagebox.showinfo("Success", "Account created successfully.")
+        messagebox.showinfo("Success", "Account created successfully. Please re-run login page")
 
 if __name__ == '__main__':
     root = tk.Tk()
