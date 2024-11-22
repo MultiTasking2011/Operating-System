@@ -1,9 +1,0 @@
-bring all from quiver
-
-function:hello:*dfdsf*:
--> display .hello.
--> var:test: = str:testing:
--> display |test|
-:break:
-
-run :hello:*dfdsf*
