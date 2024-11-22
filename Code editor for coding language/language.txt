@@ -1,0 +1,4 @@
+bring all from quiver
+var:test: = str:testing:
+
+display |test|

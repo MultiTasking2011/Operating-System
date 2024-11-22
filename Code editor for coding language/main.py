@@ -237,6 +237,9 @@ sourcecode = fullcode(x)
 # Test the code execution
 result, liststore = sourcecode.quiver()
 # print(result)
-for i in result:
-    print(i)
-print(liststore)
+if result:
+    for i in result:
+        print(i)
+
+if liststore:
+    print(liststore)
