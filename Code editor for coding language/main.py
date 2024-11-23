@@ -1,5 +1,7 @@
 import re
 
+output = list()
+
 def read_file(filename):
     try:
         # Open the file and read its content
@@ -201,7 +203,10 @@ class fullcode:
                                     funcdisplaystore.append(funcliststorage.get(str(funcdictnamecheck[0])))
 
             # return store, funcdisplaystore if functioncallcheck else store
-            return store, liststorage
+            if liststorage:
+                return liststorage
+            if store:
+                return store
 
     def rand(self):
         if self.c:
@@ -235,11 +240,9 @@ x = read_file("Code editor for coding language/language.txt")
 sourcecode = fullcode(x)
 
 # Test the code execution
-result, liststore = sourcecode.quiver()
 # print(result)
-if result:
-    for i in result:
-        print(i)
 
-if liststore:
-    print(liststore)
+for i in sourcecode.quiver():
+    output.append(i)
+
+#bring output
