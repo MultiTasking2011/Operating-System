@@ -1,0 +1,54 @@
+
+"""
+# Example usage
+with Progress() as progress:
+    task = progress.add_task("Processing", total=100)
+    for i in range(100):
+        progress.update(task, advance=1)
+        time.sleep(0.05)  # Simulate work
+
+def progress_bar(current, total, bar_length=40):
+    progress = current / total
+    bar = '=' * int(bar_length * progress) + '-' * (bar_length - int(bar_length * progress))
+    sys.stdout.write(f'\r|{bar}| {current}/{total} ({progress * 100:.2f}%)')
+    sys.stdout.flush()
+
+# Example usage
+total = 100
+for i in range(total + 1):
+    progress_bar(i, total)
+    time.sleep(0.05)  # Simulate work
+
+# Example usage with a loop
+for i in tqdm(range(100), desc="Progress"):
+    time.sleep(0.05)  # Simulate work
+
+console = Console()
+
+# Print colored text
+console.print("[red]This text is red.[/red]")
+console.print("[green]This text is green.[/green]")
+console.print("[bold blue]This is bold blue text.[/bold blue]")
+console.print("[yellow on black]Yellow text on black background.[/yellow on black]")
+print("\033[31mThis text is red.\033[0m")
+print("\033[32mThis text is green.\033[0m")
+print("\033[33mThis text is yellow.\033[0m")
+print("\033[34mThis text is blue.\033[0m")
+
+"""
+
+show intro
+
+1.
+enter networksniffer
+monitor emails
+find email
+exit networksniffer
+scan full computer of target
+find file
+delete file
+start getting hacked by some hackers in the store
+find the hackers
+50/50 chance success finding hackers/failure
+if success destory hackers' computers
+if failure destroy all computers in store
