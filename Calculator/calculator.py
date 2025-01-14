@@ -171,6 +171,8 @@ class calculator():
 
 if __name__ == '__main__':
     root=tk.Tk()
+    root.geometry("400x300")
+    root.resizable(False, False)
     app = calculator(root)
     root.mainloop()
 
