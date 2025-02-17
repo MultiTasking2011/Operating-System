@@ -1,4 +1,5 @@
 bring all from quiver
-var:test: = str:testing:
+var:test: = bool:True:
+list:hello: = str:hi:, float:4.0:, bool:True:, int:2:
 
-display |test|
+display *hello<1>*

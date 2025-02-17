@@ -35,19 +35,18 @@ class fullcode:
         self.d = False
         self.e = False
         self.f = False
-        self.g = False  # Added to match `importing` method
 
         # Regular expressions for pattern matching
         self.display_pattern = r'^display \.(.*?)\.'
         self.display_var_pattern = r'^display \|([^|]*)\|'
         self.display_list_pattern = r'^display \*([^|]*)\*'
-        self.syntax_help = 0
+        self.syntax_help = 'display <<help>>'
         self.function_define = r'^function:([^|]*):\*([^|]*)\* \~\>'
         self.function_call = r'^run :([^:]*):\*([^*]*)\*'
         self.define_variable = r'^var:(.*?): = (.*?):(.*?):'
         self.define_list = r'^list:(.*?): = ([^|]*)'
         self.liststorage = r'^(.*?):([^|]*):'
-        self.listcalling = r'^(.*?)<([^|]*)>'
+        self.listcalling = r'^(.*?)\<([^|]*)\>'
         self.ender = ':break:'
         
     def err(self):
@@ -67,14 +66,11 @@ class fullcode:
         if "bring all from output" in self.code:
             self.d = True
 
-        if "bring all from threedimensions" in self.code:
+        if "bring all from clock" in self.code:
             self.e = True
 
-        if "bring all from clock" in self.code:
-            self.f = True
-
         if "bring all from math" in self.code:
-            self.g = True
+            self.f = True
 
     def quiver(self):
         # Call the importing method
@@ -109,6 +105,8 @@ class fullcode:
                         varstore[variable.group(1)] = float(variable.group(3))
                     if variable.group(2) == "int":
                         varstore[variable.group(1)] = int(variable.group(3))
+                    if variable.group(2) == "bool":
+                        varstore[variable.group(1)] = bool(variable.group(3))
  
                 # Display variable
                 display_variable = re.search(self.display_var_pattern, i)
@@ -132,6 +130,9 @@ class fullcode:
                                     liststorage[str(dictkeyname[0])] = float(listchecker.group(2))
                                 if listchecker.group(1) == "int":
                                     liststorage[str(dictkeyname[0])] = int(listchecker.group(2))
+                                if listchecker.group(1) == "bool":
+                                    liststorage[str(dictkeyname[0])] = bool(listchecker.group(2))
+                                
 
                 # Display lists
                 display_lists = re.search(self.display_list_pattern, i)
@@ -141,8 +142,10 @@ class fullcode:
                     if listcall:
                         listnamecheck = listcall.group(1)
                         listindexcheck = listcall.group(2)
-                        dictnamecheck = [listnamecheck + '_' + listindexcheck]
-                        store.append(liststorage.get(str(dictnamecheck[0])))
+                        dictnamecheck = listnamecheck + '_' + listindexcheck
+                        store.append(liststorage[dictnamecheck])
+                        print(liststorage[dictnamecheck])
+                    print(display_lists.group(1))
 
                 # Functions
                 functiontest = re.search(self.function_define, i)
@@ -203,8 +206,8 @@ class fullcode:
                                     funcdisplaystore.append(funcliststorage.get(str(funcdictnamecheck[0])))
 
             # return store, funcdisplaystore if functioncallcheck else store
-            if liststorage:
-                return liststorage
+            # if liststorage:
+            #     return liststorage
             if store:
                 return store
 
@@ -246,3 +249,5 @@ for i in sourcecode.quiver():
     output.append(i)
 
 #bring output
+for i in output:
+    print(i)
